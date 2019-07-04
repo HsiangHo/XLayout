@@ -26,6 +26,10 @@ extension XLayoutProxy {
         return self
     }
 
+    public var constraint: NSLayoutConstraint? {
+        return self.cashedLayoutConstraints.last
+    }
+
     public var constraints: [NSLayoutConstraint] {
         return self.cashedLayoutConstraints
     }
