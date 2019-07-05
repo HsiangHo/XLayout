@@ -8,6 +8,12 @@
 
 import Foundation
 
+// swiftlint:disable type_name
+protocol Copyable {
+    associatedtype T
+    func copy() -> T
+}
+
 public class XLayoutConstraintParam {
     public var relation: XLayoutRelation
     public var secondItem: XLayoutView?
@@ -35,5 +41,18 @@ public class XLayoutConstraintParam {
         self.constant = 0
         self.priority = XLayoutPriority.init(rawValue: 1000)
         self.isSmart = isSmart
+    }
+}
+
+extension XLayoutConstraintParam: Copyable {
+    func copy() -> XLayoutConstraintParam {
+        let instance = XLayoutConstraintParam.init(isSmart: self.isSmart)
+        instance.secondItem = self.secondItem
+        instance.attribute = self.attribute
+        instance.relation = self.relation
+        instance.multiplier = self.multiplier
+        instance.constant = self.constant
+        instance.priority = self.priority
+        return instance
     }
 }
