@@ -8,12 +8,6 @@
 
 import Foundation
 
-// swiftlint:disable type_name
-protocol Copyable {
-    associatedtype T
-    func copy() -> T
-}
-
 public class XLayoutConstraintParam {
     public var relation: XLayoutRelation
     public var secondItem: XLayoutView?
