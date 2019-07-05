@@ -10,8 +10,8 @@ import Foundation
 
 public class XLayoutConstraintParam {
     public var relation: XLayoutRelation
-    public let secondItem: XLayoutView?
-    public let attribute: XLayoutAttribute
+    public var secondItem: XLayoutView?
+    public var attribute: XLayoutAttribute
     public var multiplier: CGFloat
     public var constant: CGFloat
     public var priority: XLayoutPriority

@@ -17,17 +17,20 @@ infix operator ~: XLayoutPriorityPrecedence
 prefix operator ==
 prefix operator >=
 prefix operator <=
+prefix operator *
 
 @discardableResult
-public func ~ (left: XLayoutConstraintParam, right: Float) -> XLayoutConstraintParam {
-    var priorityValue = right
-    if 0 > priorityValue {
-        priorityValue = 1
-    } else if priorityValue > 1000 {
-        priorityValue = 1000
-    }
-    left.priority = XLayoutPriority.init(rawValue: priorityValue)
+public func ~ (left: XLayoutConstraintParam, right: CGFloat) -> XLayoutConstraintParam {
+    left.priority = XLayoutPriority.init(rawValue: Float(right))
     return left
+}
+
+@discardableResult
+public func ~ (left: CGFloat, right: CGFloat) -> XLayoutConstraintParam {
+    let params = XLayoutConstraintParam.init(isSmart: true)
+    params.constant = left
+    params.priority = XLayoutPriority.init(rawValue: Float(right))
+    return params
 }
 
 @discardableResult
@@ -49,8 +52,22 @@ public func - (left: XLayoutConstraintParam, right: CGFloat) -> XLayoutConstrain
 }
 
 @discardableResult
+public prefix func * (params: CGFloat) -> XLayoutConstraintParam {
+    let params = XLayoutConstraintParam.init(isSmart: true)
+    return params
+}
+
+@discardableResult
 public prefix func == (params: XLayoutConstraintParam) -> XLayoutConstraintParam {
     params.relation = .equal
+    return params
+}
+
+@discardableResult
+public prefix func == (right: CGFloat) -> XLayoutConstraintParam {
+    let params = XLayoutConstraintParam.init(isSmart: true)
+    params.relation = .equal
+    params.constant = right
     return params
 }
 
@@ -61,7 +78,23 @@ public prefix func >= (params: XLayoutConstraintParam) -> XLayoutConstraintParam
 }
 
 @discardableResult
+public prefix func >= (right: CGFloat) -> XLayoutConstraintParam {
+    let params = XLayoutConstraintParam.init(isSmart: true)
+    params.relation = .greaterThanOrEqual
+    params.constant = right
+    return params
+}
+
+@discardableResult
 public prefix func <= (params: XLayoutConstraintParam) -> XLayoutConstraintParam {
     params.relation = .lessThanOrEqual
+    return params
+}
+
+@discardableResult
+public prefix func <= (right: CGFloat) -> XLayoutConstraintParam {
+    let params = XLayoutConstraintParam.init(isSmart: true)
+    params.relation = .lessThanOrEqual
+    params.constant = right
     return params
 }

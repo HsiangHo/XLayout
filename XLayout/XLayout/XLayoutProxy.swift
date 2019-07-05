@@ -37,10 +37,25 @@ extension XLayoutProxy {
 
 //private methods
 extension XLayoutProxy {
+    private func reviseConstraintParam(attr: XLayoutAttribute,
+                                       params: XLayoutConstraintParam) -> XLayoutConstraintParam {
+        if params.isSmart {
+            if attr == .width || attr == .height {
+                params.secondItem = nil
+                params.attribute = XLayoutAttribute.notAnAttribute
+            } else {
+                params.secondItem = self.view.superview!
+                params.attribute = attr
+            }
+        }
+        return params
+    }
+
     private func addConstraint(by attr: XLayoutAttribute, with params: XLayoutConstraintParam) {
-        removeSpecificConstraint(attr: attr, params: params)
-        let constraint = makeConstraint(by: attr, with: params)
-        if let secondItem = params.secondItem {
+        let paramValue = reviseConstraintParam(attr: attr, params: params)
+        removeSpecificConstraint(attr: attr, params: paramValue)
+        let constraint = makeConstraint(by: attr, with: paramValue)
+        if let secondItem = paramValue.secondItem {
             closestCommonSuperview(view: secondItem).addConstraint(constraint)
         } else {
             view.addConstraint(constraint)
@@ -119,7 +134,7 @@ extension XLayoutProxy: XLayoutMethodChainingProtocol {
 
     @discardableResult
     public func leading(_ value: CGFloat) -> XLayoutProxy {
-        let params = XLayoutConstraintParam.init(secItem: self.view.superview!, attr: .leading)
+        let params = XLayoutConstraintParam.init(isSmart: true)
         params.constant = value
         addConstraint(by: .leading, with: params)
         return self
@@ -133,7 +148,7 @@ extension XLayoutProxy: XLayoutMethodChainingProtocol {
 
     @discardableResult
     public func trailing(_ value: CGFloat) -> XLayoutProxy {
-        let params = XLayoutConstraintParam.init(secItem: self.view.superview!, attr: .trailing)
+        let params = XLayoutConstraintParam.init(isSmart: true)
         params.constant = value
         addConstraint(by: .trailing, with: params)
         return self
@@ -147,7 +162,7 @@ extension XLayoutProxy: XLayoutMethodChainingProtocol {
 
     @discardableResult
     public func left(_ value: CGFloat) -> XLayoutProxy {
-        let params = XLayoutConstraintParam.init(secItem: self.view.superview!, attr: .left)
+        let params = XLayoutConstraintParam.init(isSmart: true)
         params.constant = value
         addConstraint(by: .left, with: params)
         return self
@@ -161,7 +176,7 @@ extension XLayoutProxy: XLayoutMethodChainingProtocol {
 
     @discardableResult
     public func right(_ value: CGFloat) -> XLayoutProxy {
-        let params = XLayoutConstraintParam.init(secItem: self.view.superview!, attr: .right)
+        let params = XLayoutConstraintParam.init(isSmart: true)
         params.constant = value
         addConstraint(by: .right, with: params)
         return self
@@ -175,7 +190,7 @@ extension XLayoutProxy: XLayoutMethodChainingProtocol {
 
     @discardableResult
     public func top(_ value: CGFloat) -> XLayoutProxy {
-        let params = XLayoutConstraintParam.init(secItem: self.view.superview!, attr: .top)
+        let params = XLayoutConstraintParam.init(isSmart: true)
         params.constant = value
         addConstraint(by: .top, with: params)
         return self
@@ -189,7 +204,7 @@ extension XLayoutProxy: XLayoutMethodChainingProtocol {
 
     @discardableResult
     public func bottom(_ value: CGFloat) -> XLayoutProxy {
-        let params = XLayoutConstraintParam.init(secItem: self.view.superview!, attr: .bottom)
+        let params = XLayoutConstraintParam.init(isSmart: true)
         params.constant = value
         addConstraint(by: .bottom, with: params)
         return self
@@ -203,7 +218,7 @@ extension XLayoutProxy: XLayoutMethodChainingProtocol {
 
     @discardableResult
     public func width(_ value: CGFloat) -> XLayoutProxy {
-        let params = XLayoutConstraintParam.init()
+        let params = XLayoutConstraintParam.init(isSmart: true)
         params.constant = value
         addConstraint(by: .width, with: params)
         return self
@@ -217,15 +232,7 @@ extension XLayoutProxy: XLayoutMethodChainingProtocol {
 
     @discardableResult
     public func height(_ value: CGFloat) -> XLayoutProxy {
-        let params = XLayoutConstraintParam.init()
-        params.constant = value
-        addConstraint(by: .height, with: params)
-        return self
-    }
-
-    @discardableResult
-    public func centerX(_ value: CGFloat) -> XLayoutProxy {
-        let params = XLayoutConstraintParam.init(secItem: self.view.superview!, attr: .centerX)
+        let params = XLayoutConstraintParam.init(isSmart: true)
         params.constant = value
         addConstraint(by: .height, with: params)
         return self
@@ -238,10 +245,10 @@ extension XLayoutProxy: XLayoutMethodChainingProtocol {
     }
 
     @discardableResult
-    public func centerY(_ value: CGFloat) -> XLayoutProxy {
-        let params = XLayoutConstraintParam.init(secItem: self.view.superview!, attr: .centerY)
+    public func centerX(_ value: CGFloat) -> XLayoutProxy {
+        let params = XLayoutConstraintParam.init(isSmart: true)
         params.constant = value
-        addConstraint(by: .centerX, with: params)
+        addConstraint(by: .height, with: params)
         return self
     }
 
@@ -250,4 +257,13 @@ extension XLayoutProxy: XLayoutMethodChainingProtocol {
         addConstraint(by: .centerY, with: params)
         return self
     }
+
+    @discardableResult
+    public func centerY(_ value: CGFloat) -> XLayoutProxy {
+        let params = XLayoutConstraintParam.init(isSmart: true)
+        params.constant = value
+        addConstraint(by: .centerX, with: params)
+        return self
+    }
+
 }
