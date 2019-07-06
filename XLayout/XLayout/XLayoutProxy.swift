@@ -143,6 +143,19 @@ extension XLayoutProxy {
     }
 }
 
+//internal methods
+extension XLayoutProxy {
+    func makeConstraintFromParam(by attr: XLayoutAttribute, with params: XLayoutConstraintParam) {
+        handleParam4Constraint(by: attr, with: params)
+    }
+
+    func makeConstraintFromCGFloat(by attr: XLayoutAttribute, with value: CGFloat) {
+        let params = XLayoutConstraintParam.init(isSmart: true)
+        params.constant = value
+        handleParam4Constraint(by: attr, with: params)
+    }
+}
+
 //make methods chaining
 extension XLayoutProxy: XLayoutMethodChainingProtocol {
     public var leading: XLayoutProxy {
@@ -151,15 +164,13 @@ extension XLayoutProxy: XLayoutMethodChainingProtocol {
     }
 
     public func leading(_ params: XLayoutConstraintParam) -> XLayoutProxy {
-        handleParam4Constraint(by: .leading, with: params)
+        makeConstraintFromParam(by: .leading, with: params)
         return self
     }
 
     @discardableResult
     public func leading(_ value: CGFloat) -> XLayoutProxy {
-        let params = XLayoutConstraintParam.init(isSmart: true)
-        params.constant = value
-        handleParam4Constraint(by: .leading, with: params)
+        makeConstraintFromCGFloat(by: .leading, with: value)
         return self
     }
 
@@ -170,15 +181,13 @@ extension XLayoutProxy: XLayoutMethodChainingProtocol {
 
     @discardableResult
     public func trailing(_ params: XLayoutConstraintParam) -> XLayoutProxy {
-        handleParam4Constraint(by: .trailing, with: params)
+        makeConstraintFromParam(by: .trailing, with: params)
         return self
     }
 
     @discardableResult
     public func trailing(_ value: CGFloat) -> XLayoutProxy {
-        let params = XLayoutConstraintParam.init(isSmart: true)
-        params.constant = value
-        handleParam4Constraint(by: .trailing, with: params)
+        makeConstraintFromCGFloat(by: .trailing, with: value)
         return self
     }
 
@@ -189,15 +198,13 @@ extension XLayoutProxy: XLayoutMethodChainingProtocol {
 
     @discardableResult
     public func left(_ params: XLayoutConstraintParam) -> XLayoutProxy {
-        handleParam4Constraint(by: .left, with: params)
+        makeConstraintFromParam(by: .left, with: params)
         return self
     }
 
     @discardableResult
     public func left(_ value: CGFloat) -> XLayoutProxy {
-        let params = XLayoutConstraintParam.init(isSmart: true)
-        params.constant = value
-        handleParam4Constraint(by: .left, with: params)
+        makeConstraintFromCGFloat(by: .left, with: value)
         return self
     }
 
@@ -208,15 +215,13 @@ extension XLayoutProxy: XLayoutMethodChainingProtocol {
 
     @discardableResult
     public func right(_ params: XLayoutConstraintParam) -> XLayoutProxy {
-        handleParam4Constraint(by: .right, with: params)
+        makeConstraintFromParam(by: .right, with: params)
         return self
     }
 
     @discardableResult
     public func right(_ value: CGFloat) -> XLayoutProxy {
-        let params = XLayoutConstraintParam.init(isSmart: true)
-        params.constant = value
-        handleParam4Constraint(by: .right, with: params)
+        makeConstraintFromCGFloat(by: .right, with: value)
         return self
     }
 
@@ -227,15 +232,13 @@ extension XLayoutProxy: XLayoutMethodChainingProtocol {
 
     @discardableResult
     public func top(_ params: XLayoutConstraintParam) -> XLayoutProxy {
-        handleParam4Constraint(by: .top, with: params)
+        makeConstraintFromParam(by: .top, with: params)
         return self
     }
 
     @discardableResult
     public func top(_ value: CGFloat) -> XLayoutProxy {
-        let params = XLayoutConstraintParam.init(isSmart: true)
-        params.constant = value
-        handleParam4Constraint(by: .top, with: params)
+        makeConstraintFromCGFloat(by: .top, with: value)
         return self
     }
 
@@ -246,15 +249,13 @@ extension XLayoutProxy: XLayoutMethodChainingProtocol {
 
     @discardableResult
     public func bottom(_ params: XLayoutConstraintParam) -> XLayoutProxy {
-        handleParam4Constraint(by: .bottom, with: params)
+        makeConstraintFromParam(by: .bottom, with: params)
         return self
     }
 
     @discardableResult
     public func bottom(_ value: CGFloat) -> XLayoutProxy {
-        let params = XLayoutConstraintParam.init(isSmart: true)
-        params.constant = value
-        handleParam4Constraint(by: .bottom, with: params)
+        makeConstraintFromCGFloat(by: .bottom, with: value)
         return self
     }
 
@@ -265,15 +266,13 @@ extension XLayoutProxy: XLayoutMethodChainingProtocol {
 
     @discardableResult
     public func width(_ params: XLayoutConstraintParam) -> XLayoutProxy {
-        handleParam4Constraint(by: .width, with: params)
+        makeConstraintFromParam(by: .width, with: params)
         return self
     }
 
     @discardableResult
     public func width(_ value: CGFloat) -> XLayoutProxy {
-        let params = XLayoutConstraintParam.init(isSmart: true)
-        params.constant = value
-        handleParam4Constraint(by: .width, with: params)
+        makeConstraintFromCGFloat(by: .width, with: value)
         return self
     }
 
@@ -284,15 +283,13 @@ extension XLayoutProxy: XLayoutMethodChainingProtocol {
 
     @discardableResult
     public func height(_ params: XLayoutConstraintParam) -> XLayoutProxy {
-        handleParam4Constraint(by: .height, with: params)
+        makeConstraintFromParam(by: .height, with: params)
         return self
     }
 
     @discardableResult
     public func height(_ value: CGFloat) -> XLayoutProxy {
-        let params = XLayoutConstraintParam.init(isSmart: true)
-        params.constant = value
-        handleParam4Constraint(by: .height, with: params)
+        makeConstraintFromCGFloat(by: .height, with: value)
         return self
     }
 
@@ -303,15 +300,13 @@ extension XLayoutProxy: XLayoutMethodChainingProtocol {
 
     @discardableResult
     public func centerX(_ params: XLayoutConstraintParam) -> XLayoutProxy {
-        handleParam4Constraint(by: .centerX, with: params)
+        makeConstraintFromParam(by: .centerX, with: params)
         return self
     }
 
     @discardableResult
     public func centerX(_ value: CGFloat) -> XLayoutProxy {
-        let params = XLayoutConstraintParam.init(isSmart: true)
-        params.constant = value
-        handleParam4Constraint(by: .centerX, with: params)
+        makeConstraintFromCGFloat(by: .centerX, with: value)
         return self
     }
 
@@ -322,15 +317,13 @@ extension XLayoutProxy: XLayoutMethodChainingProtocol {
 
     @discardableResult
     public func centerY(_ params: XLayoutConstraintParam) -> XLayoutProxy {
-        handleParam4Constraint(by: .centerY, with: params)
+        makeConstraintFromParam(by: .centerY, with: params)
         return self
     }
 
     @discardableResult
     public func centerY(_ value: CGFloat) -> XLayoutProxy {
-        let params = XLayoutConstraintParam.init(isSmart: true)
-        params.constant = value
-        handleParam4Constraint(by: .centerY, with: params)
+        makeConstraintFromCGFloat(by: .centerY, with: value)
         return self
     }
 }
