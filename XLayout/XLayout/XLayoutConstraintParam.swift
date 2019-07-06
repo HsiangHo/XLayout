@@ -15,9 +15,10 @@ public class XLayoutConstraintParam {
     public var multiplier: CGFloat
     public var constant: CGFloat
     public var priority: XLayoutPriority
-    public let isSmart: Bool
+    let isSmart: Bool
+    var context: Any?
 
-    public init(secItem: XLayoutView, attr: XLayoutAttribute) {
+    init(secItem: XLayoutView, attr: XLayoutAttribute, context: Any? = nil) {
         self.secondItem = secItem
         self.attribute = attr
         self.relation = .equal
@@ -25,9 +26,10 @@ public class XLayoutConstraintParam {
         self.constant = 0
         self.priority = XLayoutPriority.init(rawValue: 1000)
         self.isSmart = false
+        self.context = context
     }
 
-    public init(isSmart: Bool = false) {
+    init(isSmart: Bool = false) {
         self.secondItem = nil
         self.attribute = XLayoutAttribute.notAnAttribute
         self.relation = .equal
@@ -35,6 +37,7 @@ public class XLayoutConstraintParam {
         self.constant = 0
         self.priority = XLayoutPriority.init(rawValue: 1000)
         self.isSmart = isSmart
+        self.context = nil
     }
 }
 
