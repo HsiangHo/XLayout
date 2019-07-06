@@ -53,8 +53,9 @@ public func - (left: XLayoutConstraintParam, right: CGFloat) -> XLayoutConstrain
 }
 
 @discardableResult
-public prefix func * (params: CGFloat) -> XLayoutConstraintParam {
+public prefix func * (right: CGFloat) -> XLayoutConstraintParam {
     let params = XLayoutConstraintParam.init(isSmart: true)
+    params.multiplier = right
     return params
 }
 
