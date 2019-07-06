@@ -72,13 +72,13 @@ class ChainingAPITests: XCTestCase {
         let superView = self.window.contentView!
         superView.addSubview(view)
 
-        view.xlp.leading(20 ~ 250).trailing(-50).bottom(-20).top(20).width(140)
+        view.xlp.leading(20 ~ 250).trailing(-50).bottom(-20).top(20).width(180)
         view.layoutSubtreeIfNeeded()
         XCTAssertLessThan(view.frame.minX, superView.frame.minX + 20)
         XCTAssertEqual(view.frame.maxX, superView.frame.maxX - 50)
         XCTAssertEqual(view.frame.minY, superView.frame.minY + 20)
         XCTAssertEqual(view.frame.maxY, superView.frame.maxY - 20)
-        XCTAssertEqual(view.frame.width, 140)
+        XCTAssertEqual(view.frame.width, 180)
     }
 
     func testChainingMethodsByViewProperty() {
