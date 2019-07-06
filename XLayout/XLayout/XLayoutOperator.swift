@@ -19,6 +19,7 @@ prefix operator >=
 prefix operator <=
 prefix operator *
 
+// chaining methods operator
 @discardableResult
 public func ~ (left: XLayoutConstraintParam, right: CGFloat) -> XLayoutConstraintParam {
     left.priority = XLayoutPriority.init(rawValue: Float(right))
@@ -97,4 +98,53 @@ public prefix func <= (right: CGFloat) -> XLayoutConstraintParam {
     params.relation = .lessThanOrEqual
     params.constant = right
     return params
+}
+
+// equation-based operator
+public func == (left: XLayoutConstraintParam, right: XLayoutConstraintParam) {
+    right.relation = .equal
+    if let view: NSView = left.context as? NSView {
+        view.xlp.makeConstraintFromParam(by: left.attribute, with: right)
+    }
+}
+
+public func == (left: XLayoutConstraintParam, right: CGFloat) {
+    let params = XLayoutConstraintParam.init(isSmart: true)
+    params.relation = .equal
+    params.constant = right
+    if let view: NSView = left.context as? NSView {
+        view.xlp.makeConstraintFromParam(by: left.attribute, with: params)
+    }
+}
+
+public func >= (left: XLayoutConstraintParam, right: XLayoutConstraintParam) {
+    right.relation = .greaterThanOrEqual
+    if let view: NSView = left.context as? NSView {
+        view.xlp.makeConstraintFromParam(by: left.attribute, with: right)
+    }
+}
+
+public func >= (left: XLayoutConstraintParam, right: CGFloat) {
+    let params = XLayoutConstraintParam.init(isSmart: true)
+    params.relation = .greaterThanOrEqual
+    params.constant = right
+    if let view: NSView = left.context as? NSView {
+        view.xlp.makeConstraintFromParam(by: left.attribute, with: params)
+    }
+}
+
+public func <= (left: XLayoutConstraintParam, right: XLayoutConstraintParam) {
+    right.relation = .lessThanOrEqual
+    if let view: NSView = left.context as? NSView {
+        view.xlp.makeConstraintFromParam(by: left.attribute, with: right)
+    }
+}
+
+public func <= (left: XLayoutConstraintParam, right: CGFloat) {
+    let params = XLayoutConstraintParam.init(isSmart: true)
+    params.relation = .lessThanOrEqual
+    params.constant = right
+    if let view: NSView = left.context as? NSView {
+        view.xlp.makeConstraintFromParam(by: left.attribute, with: params)
+    }
 }
