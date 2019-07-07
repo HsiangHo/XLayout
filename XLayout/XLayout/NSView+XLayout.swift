@@ -13,6 +13,11 @@ extension NSView {
         self.translatesAutoresizingMaskIntoConstraints = false
         return XLayoutProxy.init(view: self)
     }
+
+    public func remakeLayout() {
+        let proxy = XLayoutProxy.init(view: self)
+        _ = proxy.remake
+    }
 }
 
 extension NSView: XLayoutConstraintParamMakerProtocol {
