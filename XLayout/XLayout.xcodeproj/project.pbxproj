@@ -18,6 +18,7 @@
 		988E2B2F22CCA7710091183E /* XLayoutConstraintParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988E2B2E22CCA7710091183E /* XLayoutConstraintParam.swift */; };
 		98A578D222D08818003CC947 /* XLayout.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 988E2B0222CA220B0091183E /* XLayout.framework */; };
 		98A578D922D08915003CC947 /* ChainingAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A578D822D08915003CC947 /* ChainingAPITests.swift */; };
+		98A578DB22D0CED5003CC947 /* EquationBasedAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98A578DA22D0CED5003CC947 /* EquationBasedAPITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		98A578CD22D08818003CC947 /* XLayoutTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XLayoutTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		98A578D122D08818003CC947 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		98A578D822D08915003CC947 /* ChainingAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChainingAPITests.swift; sourceTree = "<group>"; };
+		98A578DA22D0CED5003CC947 /* EquationBasedAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquationBasedAPITests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 			children = (
 				98A578D122D08818003CC947 /* Info.plist */,
 				98A578D822D08915003CC947 /* ChainingAPITests.swift */,
+				98A578DA22D0CED5003CC947 /* EquationBasedAPITests.swift */,
 			);
 			path = XLayoutTests;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98A578DB22D0CED5003CC947 /* EquationBasedAPITests.swift in Sources */,
 				98A578D922D08915003CC947 /* ChainingAPITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
