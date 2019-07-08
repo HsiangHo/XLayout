@@ -106,7 +106,10 @@ extension XLayoutProxy {
                     if let first = con.firstItem as? NSObject,
                         first == self.view && con.firstAttribute == attr,
                         let second = con.secondItem as? NSObject,
-                        second == params.secondItem && con.secondAttribute == params.attribute {
+                        second == params.secondItem && con.secondAttribute == params.attribute
+                        && params.multiplier == con.multiplier
+                        && params.priority == con.priority
+                        && params.relation == con.relation {
                         view?.removeConstraint(con)
                         break
                     }
