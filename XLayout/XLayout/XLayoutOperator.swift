@@ -18,6 +18,8 @@ prefix operator ==
 prefix operator >=
 prefix operator <=
 prefix operator *
+prefix operator |-
+postfix operator -|
 
 // chaining methods operator
 @discardableResult
@@ -148,4 +150,91 @@ public func <= (left: XLayoutConstraintParam, right: CGFloat) {
     if let view: NSView = left.context as? NSView {
         view.xlp.makeConstraintFromParam(by: left.attribute, with: params)
     }
+}
+
+// visual layout operator
+@discardableResult
+public prefix func |- (right: CGFloat) -> XLayoutVisualParam {
+    let visualParam = XLayoutVisualParam.init()
+    visualParam.elementOrder.append(XLayoutVisualElement.superView)
+    visualParam.elementOrder.append(right)
+    return visualParam
+}
+
+public prefix func |- (right: XLayoutView) -> XLayoutVisualParam {
+    let visualParam = XLayoutVisualParam.init()
+    visualParam.elementOrder.append(XLayoutVisualElement.superView)
+    visualParam.elementOrder.append(XLayoutVisualElement.padding)
+    visualParam.elementOrder.append(right)
+    return visualParam
+}
+
+public prefix func |- (right: XLayoutConstraintParam) -> XLayoutVisualParam {
+    let visualParam = XLayoutVisualParam.init()
+    visualParam.elementOrder.append(XLayoutVisualElement.superView)
+    visualParam.elementOrder.append(right)
+    return visualParam
+}
+
+public func - (left: XLayoutView, right: CGFloat) -> XLayoutVisualParam {
+    let visualParam = XLayoutVisualParam.init()
+    visualParam.elementOrder.append(left)
+    visualParam.elementOrder.append(right)
+    return visualParam
+}
+
+public func - (left: XLayoutView, right: XLayoutView) -> XLayoutVisualParam {
+    let visualParam = XLayoutVisualParam.init()
+    visualParam.elementOrder.append(left)
+    visualParam.elementOrder.append(XLayoutVisualElement.padding)
+    visualParam.elementOrder.append(right)
+    return visualParam
+}
+
+public func - (left: XLayoutVisualParam, right: CGFloat) -> XLayoutVisualParam {
+    left.elementOrder.append(right)
+    return left
+}
+
+public func - (left: XLayoutVisualParam, right: XLayoutView) -> XLayoutVisualParam {
+    if left.elementOrder.last is XLayoutView {
+        left.elementOrder.append(XLayoutVisualElement.padding)
+    }
+    left.elementOrder.append(right)
+    return left
+}
+
+public func - (left: XLayoutVisualParam, right: XLayoutConstraintParam) -> XLayoutVisualParam {
+    left.elementOrder.append(right)
+    return left
+}
+
+public func - (left: XLayoutVisualParam, right: XLayoutVisualParam) -> XLayoutVisualParam {
+    if left.elementOrder.last is XLayoutView && right.elementOrder.first is XLayoutView {
+        left.elementOrder.append(XLayoutVisualElement.padding)
+    }
+    left.elementOrder.append(contentsOf: right.elementOrder)
+    return left
+}
+
+public postfix func -| (left: CGFloat) -> XLayoutVisualParam {
+    let visualParam = XLayoutVisualParam.init()
+    visualParam.elementOrder.append(left)
+    visualParam.elementOrder.append(XLayoutVisualElement.superView)
+    return visualParam
+}
+
+public postfix func -| (left: XLayoutView) -> XLayoutVisualParam {
+    let visualParam = XLayoutVisualParam.init()
+    visualParam.elementOrder.append(left)
+    visualParam.elementOrder.append(XLayoutVisualElement.padding)
+    visualParam.elementOrder.append(XLayoutVisualElement.superView)
+    return visualParam
+}
+
+public postfix func -| (left: XLayoutConstraintParam) -> XLayoutVisualParam {
+    let visualParam = XLayoutVisualParam.init()
+    visualParam.elementOrder.append(left)
+    visualParam.elementOrder.append(XLayoutVisualElement.superView)
+    return visualParam
 }

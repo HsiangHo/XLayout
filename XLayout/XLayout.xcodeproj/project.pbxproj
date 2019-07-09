@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		983410AD22D364810024E020 /* XLayoutVisualParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983410AC22D364810024E020 /* XLayoutVisualParam.swift */; };
 		988E2B0722CA220B0091183E /* XLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 988E2B0522CA220B0091183E /* XLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		988E2B0E22CA287C0091183E /* XLayoutProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988E2B0D22CA287C0091183E /* XLayoutProxy.swift */; };
 		988E2B1722CBB0F50091183E /* XLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 988E2B1622CBB0F50091183E /* XLayout.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		983410AC22D364810024E020 /* XLayoutVisualParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLayoutVisualParam.swift; sourceTree = "<group>"; };
 		988E2B0222CA220B0091183E /* XLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		988E2B0522CA220B0091183E /* XLayout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XLayout.h; sourceTree = "<group>"; };
 		988E2B0622CA220B0091183E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				988E2B0522CA220B0091183E /* XLayout.h */,
 				988E2B1622CBB0F50091183E /* XLayout.swift */,
 				988E2B2E22CCA7710091183E /* XLayoutConstraintParam.swift */,
+				983410AC22D364810024E020 /* XLayoutVisualParam.swift */,
 				988E2B0D22CA287C0091183E /* XLayoutProxy.swift */,
 				988E2B1A22CC456D0091183E /* XLayoutOperator.swift */,
 				988E2B1822CBB1AE0091183E /* NSView+XLayout.swift */,
@@ -297,6 +300,7 @@
 			files = (
 				988E2B2F22CCA7710091183E /* XLayoutConstraintParam.swift in Sources */,
 				988E2B1722CBB0F50091183E /* XLayout.swift in Sources */,
+				983410AD22D364810024E020 /* XLayoutVisualParam.swift in Sources */,
 				988E2B0E22CA287C0091183E /* XLayoutProxy.swift in Sources */,
 				988E2B1B22CC456D0091183E /* XLayoutOperator.swift in Sources */,
 				988E2B1922CBB1AE0091183E /* NSView+XLayout.swift in Sources */,
