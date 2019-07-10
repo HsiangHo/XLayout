@@ -18,6 +18,11 @@ extension NSView {
         let proxy = XLayoutProxy.init(view: self)
         _ = proxy.remake
     }
+
+    public func visualLayout(_ args: (XLayoutVisualParam, XLayoutDirection)...) -> [NSLayoutConstraint] {
+        let proxy = XLayoutProxy.init(view: self)
+        return proxy.visualLayout(args)
+    }
 }
 
 extension NSView: XLayoutConstraintParamMakerProtocol {

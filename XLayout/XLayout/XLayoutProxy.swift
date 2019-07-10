@@ -330,3 +330,34 @@ extension XLayoutProxy: XLayoutMethodChainingProtocol {
         return self
     }
 }
+
+//visual layout methods
+extension XLayoutProxy {
+    @discardableResult
+    func visualLayout(_ args: [(XLayoutVisualParam, XLayoutDirection)]) -> [NSLayoutConstraint] {
+        for tuple in args {
+            let params = tuple.0.constraintParamForView(firstItem: self.view, direction: tuple.1)
+            for param in params {
+                switch param.attribute {
+                case .top:
+                    makeConstraintFromParam(by: .bottom, with: param)
+                case .left:
+                    makeConstraintFromParam(by: .right, with: param)
+                case .right:
+                    makeConstraintFromParam(by: .left, with: param)
+                case .bottom:
+                    makeConstraintFromParam(by: .top, with: param)
+                case .leading:
+                    makeConstraintFromParam(by: .trailing, with: param)
+                case .trailing:
+                    makeConstraintFromParam(by: .leading, with: param)
+                case .width, .height, .centerX, .centerY, .lastBaseline, .firstBaseline, .notAnAttribute:
+                    break
+                @unknown default:
+                    break
+                }
+            }
+        }
+        return self.constraints
+    }
+}
