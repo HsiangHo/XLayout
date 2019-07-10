@@ -19,6 +19,7 @@ extension NSView {
         _ = proxy.remake
     }
 
+    @discardableResult
     public func visualLayout(_ args: (XLayoutVisualParam, XLayoutDirection)...) -> [NSLayoutConstraint] {
         let proxy = XLayoutProxy.init(view: self)
         return proxy.visualLayout(args)
