@@ -21,7 +21,7 @@ class ChainingAPITests: XCTestCase {
                                defer: false)
         contentView = XLayoutView()
         self.window.contentView?.addSubview(contentView)
-        contentView.xlp.leading(20).trailing(-20).bottom(-20).top(20)
+        contentView.xLayout.leading(20).trailing(-20).bottom(-20).top(20)
         contentView.layoutSubtreeIfNeeded()
     }
 
@@ -35,7 +35,7 @@ class ChainingAPITests: XCTestCase {
         superView.addSubview(view)
 
         // make some constraints
-        view.xlp.leading(20).trailing(-20).bottom(-20).top(20)
+        view.xLayout.leading(20).trailing(-20).bottom(-20).top(20)
         view.layoutSubtreeIfNeeded()
         XCTAssertEqual(view.frame.minX, superView.frame.minX + 20)
         XCTAssertEqual(view.frame.maxX, superView.frame.maxX - 20)
@@ -43,7 +43,7 @@ class ChainingAPITests: XCTestCase {
         XCTAssertEqual(view.frame.maxY, superView.frame.maxY - 20)
 
         // update part(.leading, .top) of constraints
-        view.xlp.leading.top(50)
+        view.xLayout.leading.top(50)
         view.layoutSubtreeIfNeeded()
         XCTAssertEqual(view.frame.minX, superView.frame.minX + 50)
         XCTAssertEqual(view.frame.maxX, superView.frame.maxX - 20)
@@ -51,7 +51,7 @@ class ChainingAPITests: XCTestCase {
         XCTAssertEqual(view.frame.maxY, superView.frame.maxY - 50)
 
         // update all constraints
-        view.xlp.leading.top(30).trailing.bottom(-10)
+        view.xLayout.leading.top(30).trailing.bottom(-10)
         view.layoutSubtreeIfNeeded()
         XCTAssertEqual(view.frame.minX, superView.frame.minX + 30)
         XCTAssertEqual(view.frame.maxX, superView.frame.maxX - 10)
@@ -59,7 +59,7 @@ class ChainingAPITests: XCTestCase {
         XCTAssertEqual(view.frame.maxY, superView.frame.maxY - 30)
 
         // remake all constraints
-        view.xlp.remake.width.height(100).leading.top(20)
+        view.xLayout.remake.width.height(100).leading.top(20)
         view.layoutSubtreeIfNeeded()
         XCTAssertEqual(view.frame.width, 100)
         XCTAssertEqual(view.frame.height, 100)
@@ -72,7 +72,7 @@ class ChainingAPITests: XCTestCase {
         let superView = self.window.contentView!
         superView.addSubview(view)
 
-        view.xlp.leading(20 ~ 250).trailing(-50).bottom(-20).top(20).width(180)
+        view.xLayout.leading(20 ~ 250).trailing(-50).bottom(-20).top(20).width(180)
         view.layoutSubtreeIfNeeded()
         XCTAssertLessThan(view.frame.minX, superView.frame.minX + 20)
         XCTAssertEqual(view.frame.maxX, superView.frame.maxX - 50)
@@ -86,7 +86,7 @@ class ChainingAPITests: XCTestCase {
         let superView = self.window.contentView!
         superView.addSubview(view)
 
-        view.xlp.leading(contentView.leading)
+        view.xLayout.leading(contentView.leading)
             .trailing(contentView.trailing)
             .bottom(contentView.bottom)
             .top(contentView.top)
@@ -102,7 +102,7 @@ class ChainingAPITests: XCTestCase {
         let superView = self.window.contentView!
         superView.addSubview(view)
 
-        view.xlp.leading(contentView.leading*0.7)
+        view.xLayout.leading(contentView.leading*0.7)
             .trailing(*0.6)
             .bottom(contentView.bottom*0.9)
             .top(contentView.top*0.8)
@@ -118,7 +118,7 @@ class ChainingAPITests: XCTestCase {
         let superView = self.window.contentView!
         superView.addSubview(view)
 
-        view.xlp.leading(==(contentView.leading*0.7))
+        view.xLayout.leading(==(contentView.leading*0.7))
             .trailing(<=(*0.6))
             .bottom(contentView.bottom*0.9)
             .top(contentView.top*0.8)
@@ -136,7 +136,7 @@ class ChainingAPITests: XCTestCase {
         let superView = self.window.contentView!
         superView.addSubview(view)
 
-        view.xlp.leading(==(contentView.leading*0.7 + 20) ~ 210)
+        view.xLayout.leading(==(contentView.leading*0.7 + 20) ~ 210)
             .trailing(<=(*0.6-50))
             .bottom(>=(contentView.bottom - 20))
             .top(contentView.top*0.8)

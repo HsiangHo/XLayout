@@ -9,7 +9,7 @@
 import Foundation
 
 extension NSView {
-    public var xlp: XLayoutProxy {
+    public var xLayout: XLayoutProxy {
         self.translatesAutoresizingMaskIntoConstraints = false
         return XLayoutProxy.init(view: self)
     }
