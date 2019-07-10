@@ -15,7 +15,7 @@ public class XLayoutConstraintParam {
     public var multiplier: CGFloat
     public var constant: CGFloat
     public var priority: XLayoutPriority
-    let isSmart: Bool
+    var isSmart: Bool
     var context: Any?
 
     init(secItem: XLayoutView, attr: XLayoutAttribute, context: Any? = nil) {
