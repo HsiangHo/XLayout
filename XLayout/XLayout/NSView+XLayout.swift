@@ -20,8 +20,12 @@ extension NSView {
     }
 
     @discardableResult
-    public func visualLayout(_ args: (XLayoutVisualParam, XLayoutDirection)...) -> [NSLayoutConstraint] {
+    public func visualLayout(_ params: XLayoutVisualParamsWithDirection...) -> [NSLayoutConstraint] {
         let proxy = XLayoutProxy.init(view: self)
+        var args: [(XLayoutVisualParam, XLayoutDirection)] = []
+        for param in params {
+            args.append(contentsOf: param.params)
+        }
         return proxy.visualLayout(args)
     }
 }

@@ -18,6 +18,21 @@ public enum XLayoutDirection {
     case horizontal
 }
 
+public class XLayoutVisualParamsWithDirection {
+    public var params: [(XLayoutVisualParam, XLayoutDirection)] = []
+    public init(_ params: XLayoutVisualParam...) {
+        for param in params {
+            self.params.append((param, .vertical))
+        }
+    }
+}
+
+public class XLayoutV: XLayoutVisualParamsWithDirection {
+}
+
+public class XLayoutH: XLayoutVisualParamsWithDirection {
+}
+
 public class XLayoutVisualParam {
     public var elementOrder: [Any] = []
     public func constraintParamForView(firstItem: XLayoutView,
@@ -41,12 +56,14 @@ public class XLayoutVisualParam {
 
             }
 
-            let paddingR = elementOrder[index + 1]
-            let secondItemR = elementOrder[index + 2]
-            if let param: XLayoutConstraintParam = handleParam(padding: paddingR, secondItem: secondItemR) {
-                param.attribute = (direction == .horizontal ? .leading : .top)
-                param.constant = -param.constant
-                params.append(param)
+            if index + 2 < elementOrder.count {
+                let paddingR = elementOrder[index + 1]
+                let secondItemR = elementOrder[index + 2]
+                if let param: XLayoutConstraintParam = handleParam(padding: paddingR, secondItem: secondItemR) {
+                    param.attribute = (direction == .horizontal ? .leading : .top)
+                    param.constant = -param.constant
+                    params.append(param)
+                }
             }
         }
         return params
