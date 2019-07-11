@@ -18,7 +18,11 @@ public enum XLayoutDirection {
     case horizontal
 }
 
-public class XLayoutVisualParamsWithDirection {
+public protocol XLayoutVisualParamsWithDirection {
+    var params: [(XLayoutVisualParam, XLayoutDirection)] { get set }
+}
+
+public class XLayoutV: XLayoutVisualParamsWithDirection {
     public var params: [(XLayoutVisualParam, XLayoutDirection)] = []
     public init(_ params: XLayoutVisualParam...) {
         for param in params {
@@ -27,10 +31,13 @@ public class XLayoutVisualParamsWithDirection {
     }
 }
 
-public class XLayoutV: XLayoutVisualParamsWithDirection {
-}
-
 public class XLayoutH: XLayoutVisualParamsWithDirection {
+    public var params: [(XLayoutVisualParam, XLayoutDirection)] = []
+    public init(_ params: XLayoutVisualParam...) {
+        for param in params {
+            self.params.append((param, .horizontal))
+        }
+    }
 }
 
 public class XLayoutVisualParam {
