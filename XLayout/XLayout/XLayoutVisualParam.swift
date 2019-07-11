@@ -45,6 +45,7 @@ public class XLayoutVisualParam {
             let secondItemR = elementOrder[index + 2]
             if let param: XLayoutConstraintParam = handleParam(padding: paddingR, secondItem: secondItemR) {
                 param.attribute = (direction == .horizontal ? .leading : .top)
+                param.constant = -param.constant
                 params.append(param)
             }
         }
