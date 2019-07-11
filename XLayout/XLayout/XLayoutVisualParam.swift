@@ -68,7 +68,7 @@ public class XLayoutVisualParam {
                 let secondItemR = elementOrder[index + 2]
                 if let param: XLayoutConstraintParam = handleParam(padding: paddingR, secondItem: secondItemR) {
                     param.attribute = (direction == .horizontal ? .leading : .top)
-                    param.constant = -param.constant
+                    param.constant = 0 - param.constant
                     params.append(param)
                 }
             }
@@ -82,7 +82,7 @@ public class XLayoutVisualParam {
             param = value.copy()
         } else if let value = padding as? XLayoutVisualElement, value == .padding {
             param = XLayoutConstraintParam.init()
-            param!.constant = 8
+            param!.constant = 0
         } else if let value = padding as? CGFloat {
             param = XLayoutConstraintParam.init()
             param!.constant = value
