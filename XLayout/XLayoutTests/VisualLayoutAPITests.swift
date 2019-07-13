@@ -36,8 +36,8 @@ class VisualLayoutAPITests: XCTestCase {
         superView.addSubview(view)
 
         // make some constraints
-        view.visualLayout(XLayoutH(|-20-view-20-|),
-                          XLayoutV(|-20-view-20-|))
+        view.visualLayout(.H(|-20-view-20-|),
+                          .V(|-20-view-20-|))
         view.layoutSubtreeIfNeeded()
         XCTAssertEqual(view.frame.minX, superView.frame.minX + 20)
         XCTAssertEqual(view.frame.maxX, superView.frame.maxX - 20)
@@ -47,8 +47,8 @@ class VisualLayoutAPITests: XCTestCase {
         // update part(.leading, .top) of constraints
         view.leading == 50
         view.top == 50
-        view.visualLayout(XLayoutH(|-50-view),
-                          XLayoutV(|-50-view))
+        view.visualLayout(.H(|-50-view),
+                          .V(|-50-view))
         view.layoutSubtreeIfNeeded()
         XCTAssertEqual(view.frame.minX, superView.frame.minX + 50)
         XCTAssertEqual(view.frame.maxX, superView.frame.maxX - 20)
@@ -56,8 +56,8 @@ class VisualLayoutAPITests: XCTestCase {
         XCTAssertEqual(view.frame.maxY, superView.frame.maxY - 50)
 
         // update all constraints
-        view.visualLayout(XLayoutH(|-30-view-10-|),
-                          XLayoutV(|-30-view-10-|))
+        view.visualLayout(.H(|-30-view-10-|),
+                          .V(|-30-view-10-|))
         view.layoutSubtreeIfNeeded()
         XCTAssertEqual(view.frame.minX, superView.frame.minX + 30)
         XCTAssertEqual(view.frame.maxX, superView.frame.maxX - 10)
@@ -68,8 +68,8 @@ class VisualLayoutAPITests: XCTestCase {
         view.remakeLayout()
         view.width == 100
         view.height == 100
-        view.visualLayout(XLayoutH(|-20-view),
-                          XLayoutV(|-20-view))
+        view.visualLayout(.H(|-20-view),
+                          .V(|-20-view))
         view.layoutSubtreeIfNeeded()
         XCTAssertEqual(view.frame.width, 100)
         XCTAssertEqual(view.frame.height, 100)
@@ -83,8 +83,8 @@ class VisualLayoutAPITests: XCTestCase {
         superView.addSubview(view)
 
         view.width == 180
-        view.visualLayout(XLayoutH(|-(30 ~ 250)-view-50-|),
-                          XLayoutV(|-20-view-20-|))
+        view.visualLayout(.H(|-(30 ~ 250)-view-50-|),
+                          .V(|-20-view-20-|))
         view.layoutSubtreeIfNeeded()
         XCTAssertLessThan(view.frame.minX, superView.frame.minX + 20)
         XCTAssertEqual(view.frame.maxX, superView.frame.maxX - 50)
@@ -98,8 +98,8 @@ class VisualLayoutAPITests: XCTestCase {
         let superView = self.window.contentView!
         superView.addSubview(view)
 
-        view.visualLayout(XLayoutH(|-(*0.7)-view-(*0.6)-|),
-                          XLayoutV(|-(*0.8)-view-(*0.9)-|))
+        view.visualLayout(.H(|-(*0.7)-view-(*0.6)-|),
+                          .V(|-(*0.8)-view-(*0.9)-|))
         view.layoutSubtreeIfNeeded()
         XCTAssertEqual(view.frame.minX, superView.frame.minX * 0.7)
         XCTAssertEqual(view.frame.maxX, superView.frame.maxX * 0.6)
@@ -112,8 +112,8 @@ class VisualLayoutAPITests: XCTestCase {
         let superView = self.window.contentView!
         superView.addSubview(view)
 
-        view.visualLayout(XLayoutH(|-(*0.7)-view-(<=(*0.6))-|),
-                          XLayoutV(|-(*0.8)-view-(*0.9)-|))
+        view.visualLayout(.H(|-(*0.7)-view-(<=(*0.6))-|),
+                          .V(|-(*0.8)-view-(*0.9)-|))
         view.width >= 200
         view.layoutSubtreeIfNeeded()
         XCTAssertEqual(view.frame.minX, superView.frame.minX * 0.7)
@@ -132,14 +132,14 @@ class VisualLayoutAPITests: XCTestCase {
         superView.addSubview(viewL)
         superView.addSubview(viewT)
 
-        viewL.visualLayout(XLayoutH(|-20-viewL-20-view),
-                           XLayoutV(|-viewL-|))
+        viewL.visualLayout(.H(|-20-viewL-20-view),
+                           .V(|-viewL-|))
         viewL.width == 50
-        view.visualLayout(XLayoutH(view-|),
-                           XLayoutV(viewT-view-40-|))
+        view.visualLayout(.H(view-|),
+                           .V(viewT-view-40-|))
         view.height == 50
-        viewT.visualLayout(XLayoutH(|-10-viewT-(*0.9 + 20)-|),
-                           XLayoutV(|-viewT-view))
+        viewT.visualLayout(.H(|-10-viewT-(*0.9 + 20)-|),
+                           .V(|-viewT-view))
 
         superView.layoutSubtreeIfNeeded()
         XCTAssertEqual(viewL.frame.minX, superView.frame.minX + 20)
