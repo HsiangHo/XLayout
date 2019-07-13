@@ -16,22 +16,31 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-
         let view = NSView()
         view.wantsLayer = true
-        view.layer?.backgroundColor = .black
+        view.layer?.backgroundColor = NSColor.red.cgColor
 
-        self.window.contentView?.addSubview(view)
-        view.xlp.leading(20).bottom(-10).top(20)
-        view.xlp.leading(0).bottom(-50).top(40).trailing(-10)
-        view.xlp.remake.leading(0).bottom(-50).top(40).trailing(-10)
+        let viewL = NSView()
+        viewL.wantsLayer = true
+        viewL.layer?.backgroundColor = NSColor.blue.cgColor
 
-        let view2 = NSView()
-        view2.wantsLayer = true
-        view2.layer?.backgroundColor = NSColor.red.cgColor
+        let viewT = NSView()
+        viewT.wantsLayer = true
+        viewT.layer?.backgroundColor = NSColor.yellow.cgColor
 
-        self.window.contentView?.addSubview(view2)
-        view2.xlp.leading(==(view.leading * 1.2 + 20) ~ 999).bottom(==(view.bottom * 0.9 - 22)).top(30).trailing(-40)
+        let superView = self.window.contentView!
+        superView.addSubview(view)
+        superView.addSubview(viewL)
+        superView.addSubview(viewT)
+
+        viewL.visualLayout(.H(|-20-viewL-20-view),
+                           .V(|-viewL-|))
+        viewL.width == 50
+        view.visualLayout(.H(view-50-|),
+                          .V(viewT-20-view-40-|))
+        view.height == 50
+        viewT.visualLayout(.H(|-10-viewT-(*0.9 + 20)-|),
+                           .V(|-viewT))
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
