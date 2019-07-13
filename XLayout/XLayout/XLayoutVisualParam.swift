@@ -6,6 +6,7 @@
 //  Copyright © 2019 Jovi. All rights reserved.
 //
 
+// swiftlint:disable identifier_name
 import Foundation
 
 enum XLayoutVisualElement {
@@ -13,37 +14,20 @@ enum XLayoutVisualElement {
     case padding
 }
 
-public enum XLayoutDirection {
+enum XLayoutDirection {
     case vertical
     case horizontal
 }
 
-public protocol XLayoutVisualParamsWithDirection {
-    var params: [(XLayoutVisualParam, XLayoutDirection)] { get set }
-}
-
-public class XLayoutV: XLayoutVisualParamsWithDirection {
-    public var params: [(XLayoutVisualParam, XLayoutDirection)] = []
-    public init(_ params: XLayoutVisualParam...) {
-        for param in params {
-            self.params.append((param, .vertical))
-        }
-    }
-}
-
-public class XLayoutH: XLayoutVisualParamsWithDirection {
-    public var params: [(XLayoutVisualParam, XLayoutDirection)] = []
-    public init(_ params: XLayoutVisualParam...) {
-        for param in params {
-            self.params.append((param, .horizontal))
-        }
-    }
+public enum XLayoutVisualParamWithDirection {
+    case V(_ param: XLayoutVisualParam)
+    case H(_ param: XLayoutVisualParam)
 }
 
 public class XLayoutVisualParam {
     public var elementOrder: [Any] = []
-    public func constraintParamForView(firstItem: XLayoutView,
-                                       direction: XLayoutDirection = .horizontal) -> [XLayoutConstraintParam] {
+    internal func constraintParamForView(firstItem: XLayoutView,
+                                         direction: XLayoutDirection = .horizontal) -> [XLayoutConstraintParam] {
         var params: [XLayoutConstraintParam] = []
         let firstItemIndex: Int? = elementOrder.firstIndex {
             if let view = $0 as? XLayoutView {

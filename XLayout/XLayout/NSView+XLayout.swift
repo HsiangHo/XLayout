@@ -6,6 +6,7 @@
 //  Copyright © 2019 Jovi. All rights reserved.
 //
 
+// swiftlint:disable identifier_name
 import Foundation
 
 extension NSView {
@@ -20,11 +21,16 @@ extension NSView {
     }
 
     @discardableResult
-    public func visualLayout(_ params: XLayoutVisualParamsWithDirection...) -> [NSLayoutConstraint] {
+    public func visualLayout(_ params: XLayoutVisualParamWithDirection...) -> [NSLayoutConstraint] {
         let proxy = XLayoutProxy.init(view: self)
         var args: [(XLayoutVisualParam, XLayoutDirection)] = []
         for param in params {
-            args.append(contentsOf: param.params)
+            switch param {
+            case .H(let p):
+                args.append((p, .horizontal))
+            case .V(let p):
+                args.append((p, .vertical))
+            }
         }
         return proxy.visualLayout(args)
     }
