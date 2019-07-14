@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		982D89D822DADB5C00935C80 /* AutolayoutCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 982D89D722DADB5C00935C80 /* AutolayoutCellView.swift */; };
 		983410AD22D364810024E020 /* XLayoutVisualParam.swift in Sources */ = {isa = PBXBuildFile; fileRef = 983410AC22D364810024E020 /* XLayoutVisualParam.swift */; };
 		98556FA422D6EEE3005A4FE7 /* VisualLayoutAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98556FA322D6EEE3005A4FE7 /* VisualLayoutAPITests.swift */; };
 		988E2B0722CA220B0091183E /* XLayout.h in Headers */ = {isa = PBXBuildFile; fileRef = 988E2B0522CA220B0091183E /* XLayout.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		982D89D722DADB5C00935C80 /* AutolayoutCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutolayoutCellView.swift; sourceTree = "<group>"; };
 		983410AC22D364810024E020 /* XLayoutVisualParam.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XLayoutVisualParam.swift; sourceTree = "<group>"; };
 		98556FA322D6EEE3005A4FE7 /* VisualLayoutAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisualLayoutAPITests.swift; sourceTree = "<group>"; };
 		988E2B0222CA220B0091183E /* XLayout.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = XLayout.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -121,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				988E2B2222CC46070091183E /* AppDelegate.swift */,
+				982D89D722DADB5C00935C80 /* AutolayoutCellView.swift */,
 				988E2B2422CC460C0091183E /* Assets.xcassets */,
 				988E2B2622CC460C0091183E /* MainMenu.xib */,
 				988E2B2922CC460D0091183E /* Info.plist */,
@@ -315,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				988E2B2322CC46070091183E /* AppDelegate.swift in Sources */,
+				982D89D822DADB5C00935C80 /* AutolayoutCellView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
