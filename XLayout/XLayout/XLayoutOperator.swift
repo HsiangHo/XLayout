@@ -205,7 +205,7 @@ public func - (left: XLayoutVisualParam, right: CGFloat) -> XLayoutVisualParam {
 }
 
 public func - (left: CGFloat, right: XLayoutVisualParam) -> XLayoutVisualParam {
-    right.elementOrder.insert(right, at: 0)
+    right.elementOrder.insert(left, at: 0)
     return right
 }
 
@@ -225,9 +225,21 @@ public func - (left: XLayoutView, right: XLayoutVisualParam) -> XLayoutVisualPar
     return right
 }
 
+public func - (left: XLayoutView, right: XLayoutConstraintParam) -> XLayoutVisualParam {
+    let visualParam = XLayoutVisualParam.init()
+    visualParam.elementOrder.append(left)
+    visualParam.elementOrder.append(right)
+    return visualParam
+}
+
 public func - (left: XLayoutVisualParam, right: XLayoutConstraintParam) -> XLayoutVisualParam {
     left.elementOrder.append(right)
     return left
+}
+
+public func - (left: XLayoutConstraintParam, right: XLayoutVisualParam) -> XLayoutVisualParam {
+    right.elementOrder.insert(right, at: 0)
+    return right
 }
 
 public func - (left: XLayoutVisualParam, right: XLayoutVisualParam) -> XLayoutVisualParam {
