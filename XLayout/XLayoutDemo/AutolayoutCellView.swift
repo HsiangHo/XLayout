@@ -17,7 +17,6 @@ class AutolayoutCellView: NSView {
                                    styleMask: .borderless,
                                    backing: .buffered,
                                    defer: false)
-    static let cellViewTemplate = AutolayoutCellView()
 
     init() {
         title.isBordered = false
@@ -51,7 +50,7 @@ class AutolayoutCellView: NSView {
         img.leading == title.leading
         img.height == 64
         img.width == 64
-        text.visualLayout(.H(img-text-|), .V(title-text-(0 ~ 600)-|))
+        text.visualLayout(.H(img-text-|), .V(title-text-(8 ~ 600)-|))
     }
 
     static func dynamicHeight(_ tableView: NSTableView, _ title: String, _ text: String) -> CGFloat {
@@ -63,6 +62,7 @@ class AutolayoutCellView: NSView {
         wnd.contentView = view
         wnd.layoutIfNeeded()
         let height = view.frame.height
+        wnd.contentView = nil
         return height
     }
 }
