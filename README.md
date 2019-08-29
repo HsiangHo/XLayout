@@ -37,7 +37,6 @@ Let's make some constraints like this:
  ヽ(｀⌒´)ﾉ  
  
 ### Using XLayout
-- 🖇Chaining API  
 
 - 🖇Chaining API  
 ```swift
@@ -65,3 +64,7 @@ Let's make some constraints like this:
         view2.height == 30
         view2.visualLayout(.H(view1-80-view2-15-|), .V(|-40-view2))
 ```
+
+## License
+
+XLayout is released under the MIT license. See LICENSE for details.
