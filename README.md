@@ -25,3 +25,7 @@ Integrate XLayout into your project manually.
 - If you **have a feature request**, open an issue.
 - If you **want to contribute**, submit a pull request.
 
+## 🎮 Try it Now!
+
+Let's make some constraints like this:   
+[![DEMO](https://github.com/HsiangHo/XLayout/blob/master/images/demo.png?raw=true)](#)
