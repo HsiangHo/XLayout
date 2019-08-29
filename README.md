@@ -37,8 +37,31 @@ Let's make some constraints like this:
  ヽ(｀⌒´)ﾉ  
  
 ### Using XLayout
-- 🖇Chaining API
+- 🖇Chaining API  
 
-- ⚖️ Equation Based API
+- 🖇Chaining API  
+```swift
+        view1.xLayout.leading(20).bottom(-15).width(150).height(100)
+        view2.xLayout.leading(view1.trailing + 80).height(30).trailing(-15).top(40)
+```
+- ⚖️ Equation Based API  
+```swift
+        view1.width == 150
+        view1.height == 100
+        view1.leading == 20
+        view1.bottom == -15
+        view2.leading == view1.trailing + 80
+        view2.height == 30
+        view2.trailing == -15
+        view2.top == 40
+```
 
-- 🎨Visual Layout API
+- 🎨Visual Layout API  
+```swift
+        view1.width == 150
+        view1.height == 100
+        view1.visualLayout(.H(|-20-view1), .V(view1-15-|))
+
+        view2.height == 30
+        view2.visualLayout(.H(view1-80-view2-15-|), .V(|-40-view2))
+```
