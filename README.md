@@ -66,6 +66,28 @@ Let's make some constraints like this:
         view2.visualLayout(.H(view1-80-view2-15-|), .V(|-40-view2))
 ```
 
+- In Addition  
+ | : superView  
+ \- : space  
+ ~ : priority  
+ Use them like those ways:  
+ 
+ ```swift
+    view.xLayout.leading(==(contentView.leading*0.7 + 20) ~ 210)
+            .trailing(<=(*0.6-50))
+            .bottom(>=(contentView.bottom - 20))
+            .top(contentView.top*0.8)
+            .width(200)
+            
+    view.leading == (contentView.leading*0.7 + 20) ~ 210
+    view.trailing <= *0.6-50
+    view.bottom >= contentView.bottom - 20
+    view.top == contentView.top*0.8
+    view.width == 200
+ 
+    view.visualLayout(.H(|-10-viewT-(*0.9 + 20)-|), .V(|-viewT-view))
+ ```
+
 ## License
 
 XLayout is released under the MIT license. See LICENSE for details.
