@@ -57,6 +57,7 @@ Let's make some constraints like this:
 
 - 🎨Visual Layout API  
 ```swift
+        // the | means superView and the - means space
         view1.width == 150
         view1.height == 100
         view1.visualLayout(.H(|-20-view1), .V(view1-15-|))
