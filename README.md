@@ -28,4 +28,17 @@ Integrate XLayout into your project manually.
 ## 🎮 Try it Now!
 
 Let's make some constraints like this:   
-[![DEMO](https://github.com/HsiangHo/XLayout/blob/master/images/demo.png?raw=true)](#)
+[![DEMO](https://github.com/HsiangHo/XLayout/blob/master/images/demo.png?raw=true)](#)  
+
+### Using NSLayoutConstraint
+ щ(｀ω´щ)  
+ (╯-_-)╯~╩╩  
+ m9(`Д´)   
+ ヽ(｀⌒´)ﾉ  
+ 
+### Using XLayout
+- 🖇Chaining API
+
+- ⚖️ Equation Based API
+
+- 🎨Visual Layout API
