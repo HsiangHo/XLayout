@@ -76,6 +76,7 @@ public class XLayoutVisualParam {
             return param
         }
 
+        constraintParam.isSmart = false
         if let item = secondItem as? XLayoutVisualElement, item == .superView {
             constraintParam.isSmart = true
         } else if let item = secondItem as? XLayoutView {
