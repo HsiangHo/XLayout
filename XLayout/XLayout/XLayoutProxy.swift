@@ -103,13 +103,13 @@ extension XLayoutProxy {
         while nil != view {
             if let constraints = view?.constraints {
                 for con in constraints {
-                    if let first = con.firstItem as? NSObject,
-                        first == self.view && con.firstAttribute == attr,
-                        let second = con.secondItem as? NSObject,
-                        second == params.secondItem && con.secondAttribute == params.attribute
-                        && params.multiplier == con.multiplier
-                        && params.priority == con.priority
-                        && params.relation == con.relation {
+                    let first = con.firstItem as? NSObject
+                    let second = con.secondItem as? NSObject
+                    if first == self.view && con.firstAttribute == attr,
+                        second == params.secondItem && con.secondAttribute == params.attribute,
+                        params.multiplier == con.multiplier,
+                        params.priority == con.priority,
+                        params.relation == con.relation {
                         view?.removeConstraint(con)
                         break
                     }
