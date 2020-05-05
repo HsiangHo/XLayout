@@ -136,8 +136,8 @@ extension XLayoutProxy {
         while nil != view {
             if let constraints = view?.constraints {
                 for con in constraints {
-                    if let first = con.firstItem as? XLayoutView, let second = con.secondItem as? XLayoutView {
-                        if first == self.view || second == self.view {
+                    if let first = con.firstItem as? XLayoutView {
+                        if first == self.view {
                             view?.removeConstraint(con)
                         }
                     }
