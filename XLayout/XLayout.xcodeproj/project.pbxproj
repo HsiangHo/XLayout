@@ -496,6 +496,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.HyperartFlow.XLayout;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -526,6 +527,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MACH_O_TYPE = staticlib;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				PRODUCT_BUNDLE_IDENTIFIER = com.HyperartFlow.XLayout;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
